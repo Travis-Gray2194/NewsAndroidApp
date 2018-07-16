@@ -1,0 +1,87 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffa500"
+    android:minHeight="0dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/cardview_dark_background"
+        app:cardCornerRadius="80dp"
+        app:cardElevation="24dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="16dp">
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/card_news_image"
+                    android:layout_marginTop="8dp"
+                    android:outlineProvider="background"
+                    android:scaleType="centerCrop"
+                    app:layout_aspectRatio="178%"
+                    app:layout_widthPercent="100%"
+                    tools:src="@drawable/round_outline" />
+            </android.support.percent.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/card_news_title"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="#ffffff"
+                tools:text="NEWS TITLE" />
+
+            <TextView
+                android:id="@+id/card_news_time"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#ffffff"
+                tools:text="Date - timestamp" />
+
+            <TextView
+                android:id="@+id/card_news_content"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
+                android:maxLines="4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#ffa500"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt diam et diam sollicitudin pharetra. Pellentesque suscipit, sem sed consequat pretium, risus mi mollis sapien, a pulvinar nisi nunc vel risus. In vitae ultricies erat, vel sagittis velit. Aenean sodales, elit a accumsan ultricies, massa ipsum ullamcorper nulla, aliquet rutrum diam mi nec lorem. Nulla facilisi. Curabitur vel ligula a massa molestie rutrum eget et turpis. Donec tempor ante eget enim finibus, at malesuada massa posuere. Suspendisse posuere varius aliquet. Curabitur gravida lorem ante, vitae interdum ex tincidunt id. Nam placerat lorem lacus, ac gravida libero maximus a. Donec porta erat nec nibh convallis pharetra. Ut cursus leo lorem, facilisis mattis ligula vestibulum quis. In pharetra, odio at euismod venenatis, nulla sapien accumsan augue, sit amet rutrum velit sem ut magna. Aenean sit amet condimentum libero. Nulla vestibulum sed urna sed commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>
