@@ -35,7 +35,7 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeNewsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeNewsViewHolder holder, final int position) {
         Log.v("HomeNewsAdapter", "position: " + position);
         NewsArticle newsArticle = newsArticles.get(position);
         Glide.with(holder.cardImageView.getContext())
@@ -49,6 +49,12 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
         holder.cardTitleTextView.setText(newsArticle.getTitle());
         holder.cardTimeTextView.setText(newsArticle.getTime());
         holder.cardContentTextView.setText(newsArticle.getContent());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NewsDetailsActivity.launch(view.getContext(),position);
+            }
+        });
 
 
     }

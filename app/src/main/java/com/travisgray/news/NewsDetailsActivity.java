@@ -1,8 +1,11 @@
 package com.travisgray.news;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -12,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class NewsDetailsActivity extends AppCompatActivity {
-
+    private static final String KEY_INDEX  = "news_index";
     private WebView webview;
     private ProgressBar progressBar;
 
@@ -21,11 +24,20 @@ public class NewsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         webview = (WebView) findViewById(R.id.activity_news_details_webview);
         progressBar = (ProgressBar) findViewById(R.id.activity_news_details_progressbar);
+
+        int index = getIntent().getIntExtra(KEY_INDEX, -1);
+        if (index != -1) {
+            updateNewsDetails(index);
+        } else {
+            Toast.makeText(NewsDetailsActivity.this, "Sorry incorrect index passed", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public void UpdateNewsDetails (int index){
+    public void updateNewsDetails (int index){
 
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient(){
@@ -47,5 +59,23 @@ public class NewsDetailsActivity extends AppCompatActivity {
         });
         webview.loadUrl(NewsStore.getNewsArticles().get(index).getUrlToArticle());
         getSupportActionBar().setTitle(NewsStore.getNewsArticles().get(index).getTitle());
+    }
+
+    public static void launch(Context context, int index){
+        Intent intent = new Intent(context, NewsDetailsActivity.class);
+        intent.putExtra(KEY_INDEX,index);
+        context.startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                fileList();
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
