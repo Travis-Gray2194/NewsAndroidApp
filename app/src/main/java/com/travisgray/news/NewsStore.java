@@ -1,6 +1,6 @@
 package com.travisgray.news;
 
-import com.travisgray.news.Model.NewsArticle;
+import com.travisgray.news.Model.Article;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,14 @@ import java.util.List;
 
 public class NewsStore {
 
-    private static List<NewsArticle> newsArticles = new ArrayList<>();
+    private static List<Article> newsArticles = new ArrayList<>();
 
 
-    public static List<NewsArticle> getNewsArticles() {
+    public static List<Article> getNewsArticles() {
         return newsArticles;
     }
 
-    public static void setNewsArticles(List<NewsArticle> newsArticles) {
+    public static void setNewsArticles(List<Article> newsArticles) {
         NewsStore.newsArticles = newsArticles;
     }
 }

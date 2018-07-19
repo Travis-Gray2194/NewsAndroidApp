@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.travisgray.news.Model.NewsArticle;
+import com.travisgray.news.Model.Article;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ import java.util.List;
 
 public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNewsViewHolder> {
 
-    private List<NewsArticle> newsArticles;
+    private List<Article> newsArticles;
 
-    public HomeNewsAdapter(List<NewsArticle> newsArticles) {
+    public HomeNewsAdapter(List<Article> newsArticles) {
         this.newsArticles = newsArticles;
     }
 
@@ -37,18 +37,18 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
     @Override
     public void onBindViewHolder(@NonNull HomeNewsViewHolder holder, final int position) {
         Log.v("HomeNewsAdapter", "position: " + position);
-        NewsArticle newsArticle = newsArticles.get(position);
+        Article newsArticle = newsArticles.get(position);
         Glide.with(holder.cardImageView.getContext())
-                .load(newsArticle.getImageUrl())
+                .load(newsArticle.getUrlToImage())
                 .centerCrop()
                 .error(R.mipmap.ic_launcher)
                 .into(holder.cardImageView);
 
-        Log.v("HomeNewsAdapter", newsArticles.get(position).getImageUrl());
+        Log.v("HomeNewsAdapter", newsArticles.get(position).getUrlToImage());
 
         holder.cardTitleTextView.setText(newsArticle.getTitle());
-        holder.cardTimeTextView.setText(newsArticle.getTime());
-        holder.cardContentTextView.setText(newsArticle.getContent());
+        holder.cardTimeTextView.setText(newsArticle.getPublishedAt());
+        holder.cardContentTextView.setText(DateUtils.formatNewsAPIDate(newsArticle.getPublishedAt()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
